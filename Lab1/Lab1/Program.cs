@@ -11,8 +11,6 @@ class Program
             return;
         }
         Console.WriteLine($"{n}! = {Factorial(n)}");
-
-        // === ЗАДАЧА 2: ФИБОНАЧЧИ ===
         Console.WriteLine("\nВведите количество чисел Фибоначчи:");
         if (!int.TryParse(Console.ReadLine(), out int numbers) || numbers < 0)
         {
@@ -54,7 +52,7 @@ class Program
 
         if (tgPart < 0)
         {
-            Console.WriteLine("Ошибка: подкоренное выражение отрицательно, корень не существует");
+            Console.WriteLine("Ошибка: корень не существует");
             return;
         }
 
