@@ -1,6 +1,5 @@
 ﻿using System;
-
-namespace Lab2
+namespace Laborator2
 {
     public abstract class RepairJob : IComparable<RepairJob>
     {
