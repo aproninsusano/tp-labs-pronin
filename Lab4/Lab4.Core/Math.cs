@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Lab4.Core;
-public static class Math
+public static class MathAlgorithms
 {
     public static long Factorial(int n)
     {
