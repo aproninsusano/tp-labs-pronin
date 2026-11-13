@@ -14,17 +14,10 @@ for (int i = 0; i < N; i++)
     buyers.Add("user" + rnd.Next(0, 5000));
     amounts.Add(rnd.Next(1, 10_000));
 }
-
 // --- 2. Список уникальных покупателей ---
-var sw = Stopwatch.StartNew();
-var unique = new List<string>();
-for (int i = 0; i < buyers.Count; i++)
-{
-    if (!unique.Contains(buyers[i]))           
-        unique.Add(buyers[i]);
-}
-Console.WriteLine($"Уникальных покупателей: {unique.Count}  ({sw.ElapsedMilliseconds} мс)");
-
+var sw = Stopwatch.StartNew(); 
+var unique = new HashSet<string>(buyers).ToList();
+Console.WriteLine($"Уникальных покупателей: {unique.Count} ({sw.ElapsedMilliseconds} мс)");
 // --- 3. Текстовый отчёт ---
 sw.Restart();
 string report = "";
