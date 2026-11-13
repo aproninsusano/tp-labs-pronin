@@ -20,13 +20,13 @@ var unique = new HashSet<string>(buyers).ToList();
 Console.WriteLine($"Уникальных покупателей: {unique.Count} ({sw.ElapsedMilliseconds} мс)");
 // --- 3. Текстовый отчёт ---
 sw.Restart();
-string report = "";
+var reportBuilder = new System.Text.StringBuilder();
 for (int i = 0; i < buyers.Count; i++)
 {
-    report += buyers[i] + ";" + amounts[i] + Environment.NewLine;   
+    reportBuilder.Append(buyers[i]).Append(';').Append(amounts[i]).Append(Environment.NewLine);
 }
-Console.WriteLine($"Отчёт: {report.Length} символов  ({sw.ElapsedMilliseconds} мс)");
-
+string report = reportBuilder.ToString();
+Console.WriteLine($"Отчёт: {report.Length} символов ({sw.ElapsedMilliseconds} мс)");
 // --- 4. Сортировка сумм ---
 sw.Restart();
 var sorted = new List<int>(amounts);
