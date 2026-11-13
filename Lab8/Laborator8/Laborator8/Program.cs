@@ -34,15 +34,14 @@ sorted.Sort();
 Console.WriteLine($"Медианная сумма: {sorted[sorted.Count / 2]} ({sw.ElapsedMilliseconds} мс)");
 // --- 5. Сумма покупок каждого покупателя ---
 sw.Restart();
-var totals = new List<(string Buyer, long Total)>();
-foreach (string b in unique)
+var totalsDict = new Dictionary<string, long>();
+for (int i = 0; i < buyers.Count; i++)
 {
-    long total = 0;
-    for (int i = 0; i < buyers.Count; i++)     
-        if (buyers[i] == b)
-            total += amounts[i];
-    totals.Add((b, total));
+    string buyer = buyers[i];
+    if (!totalsDict.ContainsKey(buyer))
+        totalsDict[buyer] = 0;
+    totalsDict[buyer] += amounts[i];
 }
-Console.WriteLine($"Максимум потратил: {totals.MaxBy(t => t.Total).Buyer}  ({sw.ElapsedMilliseconds} мс)");
-
+var totals = totalsDict.Select(kvp => (Buyer: kvp.Key, Total: kvp.Value)).ToList();
+Console.WriteLine($"Максимум потратил: {totals.MaxBy(t => t.Total).Buyer} ({sw.ElapsedMilliseconds} мс)");
 Console.WriteLine($"ИТОГО: {swTotal.ElapsedMilliseconds} мс");
